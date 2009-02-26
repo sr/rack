@@ -138,13 +138,12 @@ when "deployment"
     use Rack::CommonLogger, $stderr  unless server.name =~ /CGI/
     run inner_app
   }.to_app
-
-when "none"
+else
   app = inner_app
-
 end
 
 if $DEBUG
+  pp env
   pp app
   pp inner_app
 end
